@@ -1,34 +1,42 @@
 package com.bridgelabz;
 
 public class ObjectOrientedPrograms {
+    String stockName;
+    int numberOfShares, sharePrice, totalValue;
+
     public static void main(String[] args) {
-
-        {
-            int[] deck = new int[52];
-            String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
-            String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-
-            // Initialize cards
-            for (int i = 0; i < deck.length; i++) {
-                deck[i] = i;
-            }
-
-            // Shuffle the cards
-            for (int i = 0; i < deck.length; i++) {
-                int index = (int) (Math.random() * deck.length);
-                int temp = deck[i];
-                deck[i] = deck[index];
-                deck[index] = temp;
-            }
-
-            // Display the all the cards
-            for (int i = 0; i < 52; i++) {
-                String suit = suits[deck[i] / 13];
-                String rank = ranks[deck[i] % 13];
-                System.out.println(rank + " of " + suit);
-            }
+        StockAccount[] object = new StockAccount[10];
+        int i;
+        for (i = 0; i < 5; i++)
+            object[i].getData();
+        for (i = 0; i < 5; i++) {
+            object[i].calculate();
+            object[i].display();
         }
     }
-}
+
+    public void getData() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the stock information");
+        System.out.println(" Name              :     ");
+        stockName = scanner.next();
+        System.out.println(" Number Of Shares  :     ");
+        numberOfShares = scanner.nextInt();
+        System.out.println(" Share Price       :     ");
+        sharePrice = scanner.nextInt();
+
+    }
+
+    public void calculate() {
+        totalValue = sharePrice * numberOfShares;
+
+    }
+
+    public void display() {
+        System.out.println("Stock name          :   " + stockName);
+        System.out.println("Number of shares    :   " + numberOfShares);
+        System.out.println(" Share Price        :   " + sharePrice);
+        System.out.println(" Total value        :   " + totalValue);
+    }
 
 
